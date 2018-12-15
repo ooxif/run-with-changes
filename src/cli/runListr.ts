@@ -82,7 +82,7 @@ export default async (parsed: DeepReadonly<IParsedArgs>) => {
           });
         },
 
-        title: "Run commands"
+        title: "Run scripts"
       }
     ],
     { collapse: false, exitOnError: false }
