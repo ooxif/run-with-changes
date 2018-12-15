@@ -1,7 +1,7 @@
 {
   "author": "oo <oo@xif.at>",
   "bin": {
-    "run-with-changes": "./dist/cli/index.js"
+    "run-with-changes": "dist/cli/index.js"
   },
   "dependencies": {
     "chalk": "^2.4.1",
