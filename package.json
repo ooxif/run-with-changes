@@ -1,0 +1,78 @@
+{
+  "author": "oo <oo@xif.at>",
+  "bin": {
+    "run-with-changes": "./dist/cli/index.js"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cross-spawn": "^6.0.5",
+    "exit": "^0.1.2",
+    "listr": "^0.14.3",
+    "listr-update-renderer": "^0.5.0",
+    "micromatch": "^3.1.10"
+  },
+  "description": "Run scripts in parallel with paths that have changes.",
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/cross-spawn": "^6.0.0",
+    "@types/exit": "^0.1.30",
+    "@types/jest": "^23.3.10",
+    "@types/listr": "^0.13.0",
+    "@types/micromatch": "^3.1.0",
+    "@types/node": "^10.12.14",
+    "@types/tmp": "0.0.33",
+    "eslint": "^5.10.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "jest": "^23.6.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.15.3",
+    "rimraf": "^2.6.2",
+    "tmp": "0.0.33",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.2.2"
+  },
+  "files": [
+    "dist/**/*",
+    "LICENSE.txt"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "run-with-changes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ooxif/run-with-changes.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "fic": "ts-node src/cli iwu -r fic:js \"*.js\" -r fic:json \"*.json\" -r fic:ts \"*.ts\"",
+    "fic:js": "eslint --no-ignore --fix",
+    "fic:json": "prettier --write",
+    "fic:ts": "tslint --fix",
+    "fix": "run-p -cs fix:js fix:json fix:ts",
+    "fix:js": "eslint --ignore-path .gitignore --fix .",
+    "fix:json": "prettier --write \"**/*.json\"",
+    "fix:ts": "tslint --fix --project .",
+    "linc": "ts-node src/cli iwu -r linc:js \"*.js\" -r linc:json \"*.json\" -r linc:ts \"*.ts\"",
+    "linc:js": "eslint --no-ignore",
+    "linc:json": "prettier -l",
+    "linc:ts": "tslint",
+    "lint": "run-p -cs lint:js lint:json lint:ts",
+    "lint:js": "eslint --ignore-path .gitignore .",
+    "lint:json": "prettier -l \"**/*.json\"",
+    "lint:ts": "tslint --project .",
+    "prebuild": "rimraf dist",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run validate",
+    "preversion": "npm run validate",
+    "validate": "npm run lint && npm run test",
+    "test": "jest"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.0.0"
+}
