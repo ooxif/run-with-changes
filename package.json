@@ -41,6 +41,12 @@
     "dist/**/*",
     "LICENSE.txt"
   ],
+  "keywords": [
+    "git",
+    "lint",
+    "test",
+    "validate"
+  ],
   "license": "MIT",
   "main": "dist/index.js",
   "name": "run-with-changes",
